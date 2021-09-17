@@ -16,3 +16,25 @@ def index():
     '''
     title = "Pitches-Welcome to pitch site"
     return render_template('index.html', title=title)
+
+@main.route('/home/<int:cid>', methods=['GET'])
+# @login_required
+def home(cid):
+    '''
+    View function that returns the home page
+    '''
+
+    categories = Category.get_categories()
+    posts = get_posts(cid)
+
+    if cid == 0:
+        category_name = "All Categories"
+    else:
+        selected_category = Category.get_category_by_id(cid)
+        category_name = selected_category.category_name
+
+    post_form = PostForm()
+
+    title = 'Pitches'
+
+    return render_template('home.html', post_form=post_form, title=title, posts=posts, categories=categories, category_name=category_name, )
