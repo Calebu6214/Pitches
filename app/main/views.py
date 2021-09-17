@@ -93,4 +93,24 @@ def profile(userid):
     posts = get_posts_by_user_id(userid)
     title = "Profile"
 
-    return render_template('user-profile.html', post_form=post_form, categories=categories, user=user, title=title, posts=posts)  
+    return render_template('user-profile.html', post_form=post_form, categories=categories, user=user, title=title, posts=posts) 
+
+@main.route('/user/profile/update/<int:userid>', methods=['GET', 'POST'])
+@login_required
+def update_profile(userid):
+    '''
+    Function that handles the update user profile request
+    Args:
+        userid: user id
+    Return:
+        User profile page
+    '''
+
+    user = User.query.filter_by(id=userid).first()
+    if 'photo' in request.files:
+        filename = photos.save(request.files['photo'])
+        path = f'photos/{filename}'
+        user.profile_pic_path = path
+        db.session.commit()
+
+    return redirect(url_for('.profile', userid=userid)) 
