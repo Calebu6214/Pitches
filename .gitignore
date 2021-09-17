@@ -1,0 +1,4 @@
+virtual/
+*.pyc
+virtual
+/__pycache__
