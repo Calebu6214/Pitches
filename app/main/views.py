@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, request, abort
-# from flask_login import login_required, current_user
+from flask_login import login_required, current_user
 from . import main
 from .forms import PostForm, AddComment, UpdateProfile
 from ..auth.forms import LoginForm, RegistrationForm
@@ -38,3 +38,29 @@ def home(cid):
     title = 'Pitches'
 
     return render_template('home.html', post_form=post_form, title=title, posts=posts, categories=categories, category_name=category_name, )
+
+@main.route('/post/new', methods=['GET', 'POST'])
+# @login_required
+def new_post():
+    '''
+    View function that handles a post request
+    '''
+    form = PostForm()
+    request_endpoint = form.endpoint.data
+
+    if request_endpoint == 'main.profile':
+        redirect_to = url_for('.profile', userid=current_user.id)
+    elif request_endpoint == 'main.home':
+        redirect_to = url_for('.home', cid=0)
+
+    if form.validate_on_submit():
+
+        print(request_endpoint)
+
+        new_post = Post(post=form.post.data, user_id=current_user.get_id(
+        ), category_id=form.category.data.id)
+
+        db.session.add(new_post)
+        db.session.commit()
+
+    return redirect(redirect_to)
