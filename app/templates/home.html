@@ -1,0 +1,20 @@
+{% extends 'base.html' %}  {% import 'macros.html' as macro %}  {% import 'bootstrap/wtf.html' as wtf %} {% block
+    content %}
+    <div class="page-wrapper">
+      {% include 'navbar.html'%}
+      {% include 'add-post-modal.html'%}
+      <div class="content-wrapper">
+        <div class="category-well">
+          <h1>{{category_name}}</h1>
+          {%if posts|length%}
+          <p> All {{category_name}} Pitches</p>
+          {%else%}
+          <p>No {{category_name}} pitches to display here</p>
+          {%endif%}
+        </div>
+        <div class="category-posts">
+          {{macro.displayPosts(posts)}}
+        </div>
+      </div>
+    </div>
+    {% endblock %}
