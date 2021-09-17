@@ -40,7 +40,7 @@ def home(cid):
     return render_template('home.html', post_form=post_form, title=title, posts=posts, categories=categories, category_name=category_name, )
 
 @main.route('/post/new', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def new_post():
     '''
     View function that handles a post request
@@ -114,3 +114,19 @@ def update_profile(userid):
         db.session.commit()
 
     return redirect(url_for('.profile', userid=userid)) 
+
+@main.route('/post/<int:pid>', methods=['GET', 'POST'])
+@login_required
+def post(pid):
+    '''
+    View function that displays a selected post
+    '''
+    categories = Category.get_categories()
+    comments = get_comments()
+    post = get_posts_by_post_id(pid)
+    title = "Pitches - post"
+
+    post_form = PostForm()
+    comment_form = AddComment()
+
+    return render_template('post.html', title=title, categories=categories, post_form=post_form, post=post, comment_form=comment_form, comments=comments)
