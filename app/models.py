@@ -29,3 +29,34 @@ class User( db.Model):
     password_hash = db.Column(db.String(255))
     posts = db.relationship('Post', backref='user', lazy='dynamic')
     comments = db.relationship('Comment', backref='user', lazy='dynamic')
+
+    @property
+    def password(self):
+        '''
+        Method to block access to the password property
+        '''
+        raise AttributeError('You cannot read the password attribute')
+
+    @password.setter
+    def password(self, password):
+        '''
+        Method to generate a password hash
+        Args:
+            password: password to hash
+        '''
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        '''
+        Method to verify the password on login
+        Args:
+            password: password to verify
+        '''
+        return check_password_hash(self.password_hash, password)
+
+    def save_user(self):
+        '''
+        Method that saves the instance of user model
+        '''
+        db.session.add(self)
+        db.session.commit()
