@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %} 
+{% block content %}
+    <div class="login-wrapper">
+        <div class="intro-wrapper">
+            <h4>PITCH</h4>
+            <p>
+                A pitch is a brief description (usually no longer than 500 words or two paragraphs) of a story <br> intended to convince an editor, producer or publisher to commission the piece. Writers in various industries use pitches to encourage an organization to publish their work.</p>
+            <ul>
+                <li><a href="{{url_for('auth.login')}}" class="btn-custom">Login</a></li>
+                <li><a href="{{url_for('auth.register')}}" class="btn-custom">Register</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
