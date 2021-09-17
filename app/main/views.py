@@ -64,3 +64,18 @@ def new_post():
         db.session.commit()
 
     return redirect(redirect_to)
+
+@main.route('/post/comment/<int:pid>/<int:uid>', methods=['POST'])
+@login_required
+def add_comment(pid, uid):
+    '''
+    View function that handles an add comment request
+    '''
+    form = AddComment()
+
+    if form.validate_on_submit():
+        new_comment = Comment(post_id=pid, user_id=uid,comments=form.comment.data)
+        db.session.add(new_comment)
+        db.session.commit()
+
+    return redirect(url_for('.post', pid=pid))
