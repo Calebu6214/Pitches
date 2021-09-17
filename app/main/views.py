@@ -79,3 +79,18 @@ def add_comment(pid, uid):
         db.session.commit()
 
     return redirect(url_for('.post', pid=pid))
+
+@main.route('/user/profile/<int:userid>')
+@login_required
+def profile(userid):
+    '''
+    View function that displays a user profile
+    '''
+    post_form = PostForm()
+
+    categories = Category.get_categories()
+    user = User.query.filter_by(id=userid).first()
+    posts = get_posts_by_user_id(userid)
+    title = "Profile"
+
+    return render_template('user-profile.html', post_form=post_form, categories=categories, user=user, title=title, posts=posts)  
