@@ -154,6 +154,23 @@ body {
   font-size: x-large;
   align-items: center;
 }
+.pitch{
+    text-align: center
+}
+.list{
+    justify-content:space-evenly;
+    align-items:center;
+    text-align:center;
+    list-style:none;
+    display:flex;
+    color:white;
+}
+.default{
+    color:rgb(238, 16, 90);
+}
+.button{
+    background-color:powderblue;
+}
 .intro-wrapper {
   max-width: 53%;
   padding-left: 3em;

@@ -2,9 +2,18 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, validators
 from wtforms_sqlalchemy.fields import QuerySelectField
+from sqlalchemy.orm.util import identity_key
+# from wtforms.fields import SelectFieldBase
 from ..models import Category
 from wtforms import ValidationError
 from  wtforms.validators import Required,EqualTo,Email
+from flask_sqlalchemy import SQLAlchemy
+
+has_identity_key = True
+
+__all__ = (
+    'QuerySelectField', 'QuerySelectMultipleField',
+)
 
 
 class UpdateProfile(FlaskForm):
