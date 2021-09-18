@@ -1,9 +1,9 @@
 
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
 # from flask_login import UserMixin
 from . import login_manager
+from datetime import datetime
 
 
 @login_manager.user_loader
@@ -100,3 +100,19 @@ class Category(db.Model):
         '''
         category = Category.query.filter_by(id=cid).first()
         return category
+
+class PostDetails:
+    '''
+    Post details class to define post details objects
+    '''
+
+    def __init__(self, post_id, post_date, post_detail, category, posted_by, profile_pic_path, num_posts, upvote, downvote):
+        self.post_id = post_id
+        self.post_date = post_date
+        self.post_detail = post_detail
+        self.category = category
+        self.posted_by = posted_by
+        self.profile_pic_path = profile_pic_path
+        self.num_posts = num_posts
+        self.upvote = upvote
+        self.downvote = downvote
