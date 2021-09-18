@@ -101,6 +101,42 @@ class Category(db.Model):
         category = Category.query.filter_by(id=cid).first()
         return category
 
+class Post(db.Model):
+    '''
+    Class that creates a post object
+    '''
+    __tablename__ = 'posts'
+
+    id = db.Column(db.Integer, primary_key=True)
+    post = db.Column(db.Text)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
+    upvote = db.Column(db.Integer)
+    downvote = db.Column(db.Integer)
+    comments = db.relationship('Comment', backref='comment', lazy='dynamic')
+
+    def __init__(self, post, user_id, category_id):
+        '''
+        '''
+        self.post = post
+        self.user_id = user_id
+        self.category_id = category_id
+
+    def save_post(self):
+        '''
+        Method that saves the instance of post model
+        '''
+        db.session.add(self)
+        db.session.commit()
+
+    def get_post_by_id(pid):
+        '''
+        Method that retrieves pitch post by id
+        '''
+        post = Post.query.filter_by(id=pid).first()
+        return post
+
 class PostDetails:
     '''
     Post details class to define post details objects
