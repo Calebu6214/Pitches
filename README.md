@@ -23,9 +23,9 @@ As a user can ;
 
 ## Installation
 
-Installation for the package can be done via `pip`:
-.pip install flask-bootstrap
-.pip install flask-uploads
+Installation for the package can be done via `pip`: <br>
+.pip install flask-bootstrap <br>
+.pip install flask-uploads <br>
 .pip install flask-wtf etc.
 
 ## Link to website
