@@ -162,3 +162,11 @@ class Comment(db.Model):
         '''
         comments = Comment.query.filter_by(id=cid).first()
         return comments
+
+class CommentDetails:
+    def __init__(self, post_id, comments_made, comment_date, commented_by, profile_pic_path):
+        self.post_id = post_id
+        self.comments_made = comments_made
+        self.comment_date = comment_date
+        self.commented_by = commented_by
+        self.profile_pic_path = profile_pic_path
