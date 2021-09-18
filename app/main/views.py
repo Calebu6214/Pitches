@@ -18,7 +18,7 @@ def index():
     return render_template('index.html', title=title)
 
 @main.route('/home/<int:cid>', methods=['GET'])
-# @login_required
+@login_required
 def home(cid):
     '''
     View function that returns the home page
@@ -77,6 +77,28 @@ def add_comment(pid, uid):
         new_comment = Comment(post_id=pid, user_id=uid,comments=form.comment.data)
         db.session.add(new_comment)
         db.session.commit()
+
+    return redirect(url_for('.post', pid=pid))
+
+@main.route('/post/vote/<int:pid>/<votetype>')
+@login_required
+def add_comment_vote(pid, votetype):
+
+    post = Post.query.filter_by(id=pid).first()
+
+    if votetype == 'upvote':
+
+        if post.upvote == None:
+            post.upvote = 1
+        else:
+            post.upvote += 1
+    elif votetype == 'downvote':
+        if post.downvote == None:
+            post.downvote = 1
+        else:
+            post.downvote += 1
+
+    db.session.commit()
 
     return redirect(url_for('.post', pid=pid))
 

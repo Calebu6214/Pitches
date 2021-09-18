@@ -2,7 +2,9 @@ from app import create_app, db
 from flask_script import Manager, Server
 from app.models import User,Category,Post,Comment
 from flask_migrate import Migrate, MigrateCommand
+# from flask_module import Module
 # from databases import models
+# from flask.ext.mail import Message
 # from flask.ext.script import Manager
 
 # Creating app instance
