@@ -2,16 +2,16 @@
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 # from flask_login import UserMixin
-from . import login_manager
+# from . import login_manager
 from datetime import datetime
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    '''
-    Callback function that retrieves a user when a unique identifier is passed
-    '''
-    return User.query.get(int(user_id))
+# @login_manager.user_loader
+# def load_user(user_id):
+#     '''
+#     Callback function that retrieves a user when a unique identifier is passed
+#     '''
+#     return User.query.get(int(user_id))
 
 
 class User( db.Model):
@@ -116,3 +116,49 @@ class PostDetails:
         self.num_posts = num_posts
         self.upvote = upvote
         self.downvote = downvote
+
+class Comment(db.Model):
+    '''
+    Class that creates comment objects
+    '''
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer, primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    comments = db.Column(db.String(255))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __init__(self, post_id, user_id, comments):
+        '''
+        Method that defines Comment object properties.
+        Args: 
+            post_id: New comment post id
+            user_id: New comment user id
+        '''
+        self.post_id = post_id
+        self.user_id = user_id
+        self.comments = comments
+
+    def save_comment(self):
+        '''
+        Method that saves the instance of the comment model
+        '''
+        db.session.add(self)
+        db.session.commit()
+
+    def get_comments():
+        '''
+        Method that retrieves post comments based on the post id
+        Args:
+            id: post id
+        '''
+        comments = Comment.query.filter_by(post_id=id).all()
+        return comments
+
+    def get_comments_by_id(cid):
+        '''
+        Method that retrieves comments by id
+        '''
+        comments = Comment.query.filter_by(id=cid).first()
+        return comments
