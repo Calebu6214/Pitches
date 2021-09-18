@@ -1,3 +1,4 @@
+export SECRET_KEY='os.urandom(32)'
 export MAIL_USERNAME='calebkimutai97@gmail.com'
 export MAIL_PASSWORD='Caleb254'
 

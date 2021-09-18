@@ -1,0 +1,314 @@
+
+
+/*-----------------
+	1. General
+-----------------------*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  background-color:green;
+}
+.page-wrapper {
+  padding: 0;
+}
+.hide-div {
+  display: none;
+}
+/*-----------------
+    2. Header
+ -----------------------*/
+.bg-header {
+  background-color:green;
+}
+
+/*-----------------
+    3. Posts
+ -----------------------*/
+.content-wrapper {
+  margin: 0 auto;
+  padding: 5em 2em 2em 2em;
+}
+.category-posts{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  column-gap: 1em;
+}
+.post-main-wrapper{
+  padding-top: 4em;
+  margin: 0 auto;
+  width: 80%;
+}
+.post-wrapper {
+  background-color: #18191a;
+  border: none;
+  border-radius: 6px;
+  padding: 2.45em 2.25em;
+  margin: 2em 0;
+  color: #fff;
+}
+.post-header {
+  margin: 0.1em;
+}
+.post-user-img {
+  padding: 0;
+}
+.post-user-img img {
+  width: 100%;
+}
+.up-down-vote ul {
+  list-style-type: none;
+  padding: 0;
+}
+.up-down-vote ul li {
+  display: inline-block;
+}
+.up-down-vote ul li a {
+  text-decoration: none;
+}
+.post-body p {
+  margin: 0 0.25em;
+  padding-bottom: 0.125em;
+  border-bottom: 1px solid;
+}
+.comments-tally p {
+  float: right;
+  padding-right: 0.25em;
+}
+.post-statistics {
+  padding: 0.45em 0;
+  border-bottom: 1px solid;
+  margin: 0 0.25em;
+}
+.upvote,
+.downvote {
+  color: #fff;
+  padding: 0.2em 0.51em;
+  border-radius: 4px;
+}
+.upvote:hover,
+.downvote:hover {
+  color: #fff;
+}
+.upvote {
+  background: blue;
+}
+.downvote {
+  background: red;
+}
+.post-comments-wrapper {
+  margin: 0.45em 2em;
+}
+.post-comments-wrapper img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.add-comment,
+.post-comments {
+  margin: 0.25em 0;
+  padding: 0.35em 0;
+}
+.add-comment-form .form-control {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  color: #fff;
+  height: 40px;
+  padding: 10px 50px 10px 15px;
+}
+.add-comment-form .btn {
+  background-color: transparent;
+  border-color: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  min-height: 40px;
+  padding: 7px 15px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.add-comment-form form {
+  position: relative;
+}
+.comment-body {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.75em;
+}
+#add_post_modal {
+  color: #000;
+}
+/*-----------------
+  4. Login
+-----------------------*/
+.login-wrapper {
+  background-color: green;
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: x-large;
+  align-items: center;
+}
+.intro-wrapper {
+  max-width: 53%;
+  padding-left: 3em;
+  padding-top: 9em;
+}
+.intro-wrapper h4 {
+  font-weight: 900;
+  font-size: 1.2em;
+}
+.intro-wrapper h1 {
+  font-size: 3em;
+  font-weight: 800;
+}
+.intro-wrapper ul {
+  padding: 0;
+  margin-top: 1.25em;
+}
+.intro-wrapper ul li {
+  display: inline-block;
+}
+.intro-wrapper a {
+  text-decoration: none;
+}
+.intro-wrapper .btn-custom {
+  border: 1px solid;
+  padding: 0.45em 1em;
+  border-radius: 4px;
+  background: #1c375b;
+  color: #fff;
+  font-weight: 500;
+}
+.login-wrapper .login-box {
+  padding: 10%;
+}
+.login-wrapper .login-body,
+.login-wrapper .register-body {
+  width: 100%;
+  margin: 1em;
+  padding: 2em;
+  border-radius: 5px;
+}
+.login-wrapper .register-box {
+  padding: 2%;
+}
+.login-wrapper .login-box input,
+.login-wrapper .register-box input {
+  height: 50px;
+}
+
+.login-wrapper .login-box .btn,
+.login-wrapper .register-box .btn {
+  padding: 0 2em;
+  height: 38px;
+  margin: 0.75em 0;
+  font-size: 17px;
+  font-weight: 700;
+  background: indianred;
+  color: #fff;
+}
+/*-----------------
+    2. Profile
+ -----------------------*/
+ 
+ .profile-wrapper {
+  margin: 0 auto;
+  padding: 3em 1.75em 0 1.75em;
+ }
+ .profile-wrapper .user-details img{
+   width: 100%;
+ }
+ .edit-icon{
+  background-color: #eee;
+  border: 1px solid #e3e3e3;
+  border-radius: 24px;
+  color: #bbb;
+  float: right;
+  font-size: 12px;
+  line-height: 24px;
+  min-height: 26px;
+  text-align: center;
+  width: 26px;
+ }
+ .user-details{
+   position: relative;
+   border: 2px solid;
+    border-radius: 15px;
+    padding: 1em;
+    margin-top: 2em;
+ }
+ .user-details .pro-edit{
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0.1em;
+ }
+ .user-details h6{
+  font-weight: 900;
+  /* margin: 0; */
+  padding: 0.75em 0 0 0;
+ }
+ .profile-wrapper .posts{
+   height: 800px;
+   overflow: scroll;
+ }
+/*-----------------
+ Error page
+ -----------------------*/
+.error-page {
+  align-items: center;
+  color: #1f1f1f;
+  display: flex;
+  margin: 0;
+}
+.error-page .error-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.error-content {
+  margin: 0 auto;
+  max-width: 480px;
+  padding: 40px 0;
+  text-align: center;
+  width: 100%;
+}
+.error-content h1 {
+  color: #667eea;
+  font-size: 10em;
+}
+.error-content p {
+  margin-bottom: 30px;
+}
+.error-content .btn {
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  min-width: 200px;
+  padding: 10px 20px;
+}
+.btn-custom {
+  background: #667eea;
+  background: -moz-linear-gradient(left, #667eea 0%, #764ba2 100%);
+  background: -webkit-linear-gradient(left, #667eea 0%, #764ba2 100%);
+  background: -ms-linear-gradient(left, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+.btn-custom.focus,
+.btn-custom:focus,
+.btn-custom:hover {
+  background: #667eea;
+  background: -moz-linear-gradient(left, #667eea 0%, #764ba2 100%);
+  background: -webkit-linear-gradient(left, #667eea 0%, #764ba2 100%);
+  background: -ms-linear-gradient(left, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}

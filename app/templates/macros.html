@@ -1,0 +1,46 @@
+{% macro displayPosts(posts)%}
+    {% for post in posts %}
+    <div class="post-wrapper">
+    <div class="row post-header">
+        <div class="col-md-2 post-user-img">
+        <img
+            src="{{url_for('static', filename=post.profile_pic_path)}}"
+            alt="user profile pic"
+        />
+        </div>
+        <div class="col-md-10 post-content">
+        <h4>{{post.category}}</h4>
+        <p>
+            <span class="post-user-name">{{post.posted_by}}</span> |
+            <span>{{post.post_date}}</span>
+        </p>
+        </div>
+    </div>
+    <div class="post-body">
+        <p>{{post.post_detail}}</p>
+    </div>
+    <div class="post-statistics">
+        <div class="row">
+        <div class="col-md-6 up-down-vote">
+            <ul>
+            <li class="upvote" href="#">
+                <i class="fa fa-thumbs-up"></i>
+                {%if post.upvote != None%} {{post.upvote}} {%endif%}
+            </li>
+            <li class="downvote" href="#">
+                <i class="fa fa-thumbs-down"></i>
+                {%if post.downvote != None%} {{post.downvote}} {%endif%}
+            </li>
+            </ul>
+        </div>
+        <div class="col-md-6 comments-tally">
+            <p>{{post.num_posts}} comments</p>
+        </div>
+        </div>
+    </div>
+    <div class="">
+        <a href="{{url_for('main.post', pid=post.post_id)}}">View pitch</a>
+    </div>
+    </div>
+    {% endfor %}
+{% endmacro%}

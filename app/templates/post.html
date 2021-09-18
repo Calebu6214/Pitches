@@ -1,0 +1,107 @@
+{% extends 'base.html' %} {% import 'bootstrap/wtf.html' as wtf %} {% block
+    content %}
+    <div class="page-wrapper">
+      {% include 'navbar.html'%}
+      <div class="post-main-wrapper">
+        <div class="post-wrapper">
+          <div class="row post-header">
+            <div class="col-md-2 post-user-img">
+              <img
+                src="{{url_for('static', filename=post.profile_pic_path)}}"
+                alt="user profile pic"
+              />
+            </div>
+            <div class="col-md-10 post-content">
+              <h4>{{post.category}}</h4>
+              <p>
+                <span class="post-user-name">{{post.posted_by}}</span> |
+                <span>{{post.post_date}}</span>
+              </p>
+            </div>
+          </div>
+          <div class="post-body">
+            <p>{{post.post_detail}}</p>
+          </div>
+          <div class="post-statistics">
+            <div class="row">
+              <div class="col-md-6 up-down-vote">
+                <ul>
+                  <li>
+                    <a
+                      class="upvote"
+                      href="{{url_for('main.add_comment_vote', pid=post.post_id, votetype='upvote')}}"
+                    >
+                      <i class="fa fa-thumbs-up"></i>
+                      {%if post.upvote != None%} {{post.upvote}} {%endif%}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="downvote"
+                      href="{{url_for('main.add_comment_vote', pid=post.post_id, votetype='downvote')}}"
+                    >
+                      <i class="fa fa-thumbs-down"></i>
+                      {%if post.downvote != None%} {{post.downvote}} {%endif%}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6 comments-tally">
+                <p>{{post.num_posts}} comments</p>
+              </div>
+            </div>
+          </div>
+          <div class="post-comments-wrapper">
+            {% if user == current_user.user and current_user.is_authenticated %}
+            <div class="row add-comment">
+              <div class="col-md-2">
+                <img
+                  src="{{url_for('static', filename=current_user.profile_pic_path)}}"
+                  alt=""
+                />
+              </div>
+              <div class="col-md-10">
+                <div class="add-comment-form">
+                  <form
+                    action="{{url_for('main.add_comment', uid=current_user.id, pid=post.post_id)}}"
+                    method="POST"
+                  >
+                    {{comment_form.hidden_tag() }}
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Add a comment..."
+                      name="comment"
+                      id="comment"
+                      required
+                    />
+                    <div class="input-group-append">
+                      <button type="submit" class="btn">
+                        <i class="fa fa-paper-plane"></i>
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            {% endif %} {% for comment in comments %} {% if comment.post_id ==
+            post.post_id %}
+            <div class="row post-comments">
+              <div class="col-md-2 comment-image">
+                <img
+                  src="{{url_for('static', filename=comment.profile_pic_path)}}"
+                  alt=""
+                />
+              </div>
+              <div class="col-md-10 comment-body">
+                <div>{{comment.commented_by}}</div>
+                <div>{{comment.comments_made}}</div>
+                <div>{{comment.comment_date}}</div>
+              </div>
+            </div>
+            {% endif%} {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
