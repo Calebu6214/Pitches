@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
-from wtforms.fields import simple
+# from wtforms.fields import simple
 from config import config_options
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_manager
@@ -39,6 +39,7 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
     mail.init_app(app)
+    # Model.init_app(app)
 
     # configure UploadSet...
     configure_uploads(app, photos)

@@ -29,7 +29,7 @@ def make_shell_context():
     '''
     Function that allows us to pass properties into the shell context.
     '''
-    return dict(app=app, db=db, User=User, Category=Category, Comment=Comment, Post = Post)
+    return dict(app=app, db=db, User=User, Category=Category, Comment=Comment,Post = Post)
 
 if __name__ == '__main__':
     manager.run()

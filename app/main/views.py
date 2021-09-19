@@ -7,8 +7,18 @@ from ..models import User, Post, Category, Comment
 from ..request import get_posts, get_comments, get_posts_by_user_id, get_posts_by_post_id
 from ..import db, photos
 from sqlalchemy import func
+# import markdown
 
 
+# from flask import reqest, redirect 
+# @main.route("/view/<post_id>", methods=["GET","POST"]) 
+# def view_post(post_id): 
+#     post = BlogPost.objects.get(id=post_id) 
+#     if request.args.get("vote"): 
+#        post.likes = post.likes + 1 
+#        post.save() 
+#        return redirect("/view/{post_id}".format(post_id=post_id)) 
+#     return render_template("view_post.html",{'post':post}) 
 @main.route('/')
 def index():
     '''
@@ -38,6 +48,24 @@ def home(cid):
     title = 'Pitches'
 
     return render_template('home.html', post_form=post_form, title=title, posts=posts, categories=categories, category_name=category_name, )
+
+
+
+# @main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
+# @login_required
+# def new_review(id):
+#     form = ReviewForm()
+    # movie = get_movie(id)
+
+    # if form.validate_on_submit():
+    #     title = form.title.data
+    #     review = form.review.data
+    #     new_review = Pitch(movie_review=review,user=current_user)
+    #     new_review.save_review()
+    #     return redirect(url_for('main.review',id.id ))
+
+    # title = f' New pitch'
+    # return render_template('home.html',title = title, review_form=form)
 
 @main.route('/post/new', methods=['GET', 'POST'])
 @login_required
