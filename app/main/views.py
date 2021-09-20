@@ -50,23 +50,6 @@ def home(cid):
     return render_template('home.html', post_form=post_form, title=title, posts=posts, categories=categories, category_name=category_name, )
 
 
-
-# @main.route('/movie/review/new/<int:id>', methods = ['GET','POST'])
-# @login_required
-# def new_review(id):
-#     form = ReviewForm()
-    # movie = get_movie(id)
-
-    # if form.validate_on_submit():
-    #     title = form.title.data
-    #     review = form.review.data
-    #     new_review = Pitch(movie_review=review,user=current_user)
-    #     new_review.save_review()
-    #     return redirect(url_for('main.review',id.id ))
-
-    # title = f' New pitch'
-    # return render_template('home.html',title = title, review_form=form)
-
 @main.route('/post/new', methods=['GET', 'POST'])
 @login_required
 def new_post():
@@ -77,21 +60,25 @@ def new_post():
     request_endpoint = form.endpoint.data
 
     if request_endpoint == 'main.profile':
-        redirect_to = url_for('.profile', userid=current_user.id)
+            redirect_to = url_for('.profile', userid=current_user.id)
     elif request_endpoint == 'main.home':
-        redirect_to = url_for('.home', cid=0)
+            redirect_to = url_for('.home', cid=0)
+    elif request_endpoint=='main.new_post':
+            redirect_to = url_for('.new_post',pid=0)
 
     if form.validate_on_submit():
 
-        print(request_endpoint)
+            print(request_endpoint)
 
-        new_post = Post(post=form.post.data, user_id=current_user.get_id(
-        ), category_id=form.category.data.id)
+            new_post = Post(post=form.post.data, user_id=current_user.get_id(
+            ), category_id=form.category.data.id)
 
-        db.session.add(new_post)
-        db.session.commit()
+            db.session.add(new_post)
+            db.session.commit()
 
-    return redirect(redirect_to)
+    # return redirect(redirect_to)
+            return redirect(redirect_to)
+    return render_template('add-post-modal.html',post_form=form)
 
 @main.route('/post/comment/<int:pid>/<int:uid>', methods=['POST'])
 @login_required

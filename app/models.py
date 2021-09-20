@@ -2,9 +2,8 @@ from typing import BinaryIO
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from . import login_manager
 from datetime import datetime
-# from . import models
+from . import login_manager
 
 
 @login_manager.user_loader
@@ -62,11 +61,6 @@ class User( UserMixin,db.Model):
         db.session.add(self)
         db.session.commit()
 
-# class BlogPost(models.Model): 
-#       id = models.IntegerField(primary_key=True) 
-#       likes = models.IntegerField(default=0) 
-#       post = models.TextField() 
-
 class Category(db.Model):
     '''
     Class that creates a pitch Category Object
@@ -106,30 +100,6 @@ class Category(db.Model):
         '''
         category = Category.query.filter_by(id=cid).first()
         return category
-
-# class Pitch(db.Model):
-
-#     __tablename__ = 'reviews'
-
-#     id = db.Column(db.Integer,primary_key = True)
-#     movie_id = db.Column(db.Integer)
-#     movie_title = db.Column(db.String)
-#     image_path = db.Column(db.String)
-#     movie_review = db.Column(db.String)
-#     posted = db.Column(db.DateTime,default=datetime.utcnow)
-#     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-
-
-
-#     def save_review(self):
-#         db.session.add(self)
-#         db.session.commit()
-
-
-#     @classmethod
-#     def get_reviews(cls,id):
-#         reviews=Pitch.query.filter_by(movie_id=id).all()
-#         return reviews
 
 class Post(db.Model):
     '''

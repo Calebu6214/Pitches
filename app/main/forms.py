@@ -2,7 +2,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, validators
 from wtforms_sqlalchemy.fields import QuerySelectField
-from sqlalchemy.orm.util import identity_key
+# from sqlalchemy.orm.util import identity_key
 # from wtforms.ext.sqlalchemy.fields import QuerySelectField
 # from wtforms.fields import SelectFieldBase
 from ..models import Category
@@ -11,11 +11,6 @@ from  wtforms.validators import Required,EqualTo,Email
 from flask_sqlalchemy import SQLAlchemy
 # from wtforms.ext.sqlalchemy.fields import QuerySelectMultipleField
 
-has_identity_key = True
-
-__all__ = (
-    'QuerySelectField', 'QuerySelectMultipleField',
-)
 # class ReviewForm(FlaskForm):
 
 #     title=StringField('Pitch title', validators=[Required()])

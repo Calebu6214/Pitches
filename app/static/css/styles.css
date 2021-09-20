@@ -13,7 +13,7 @@ body {
   padding: 0;
   font-family: "Raleway", sans-serif;
   font-size: 18px;
-  background-color:green;
+  background-color:lightpink;
 }
 .page-wrapper {
   padding: 0;
@@ -31,7 +31,13 @@ body {
 /*-----------------
     3. Posts
  -----------------------*/
-.content-wrapper {
+.modal-body{
+  background-color: azure;
+}
+.postme{
+  background-color:rgb(224, 128, 11);
+}
+ .content-wrapper {
   margin: 0 auto;
   padding: 5em 2em 2em 2em;
 }
@@ -167,7 +173,15 @@ body {
 }
 .default{
     color:rgb(238, 16, 90);
+    background-color:lightgoldenrodyellow;
 }
+.dpitch{
+    color:yellow;
+}
+.modal{
+  background-color:burlywood;
+}
+
 .button{
     background-color:powderblue;
 }

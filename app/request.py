@@ -1,6 +1,5 @@
 # import urllib.request,json
 from . import db
-# from . import Model
 from sqlalchemy import desc
 from .models import Post, PostDetails, Category, User, Comment, CommentDetails
 
