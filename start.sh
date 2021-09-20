@@ -1,5 +1,4 @@
-export SECRET_KEY='os.urandom(32)'
-# export PYTHONPATH="${PYTHONPATH}:/path/to/your/project/"
+export SECRET_KEY='caleb'
 export MAIL_USERNAME='calebkimutai97@gmail.com'
 export MAIL_PASSWORD='Caleb254'
 
