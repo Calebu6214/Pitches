@@ -8,7 +8,7 @@ from flask_migrate import Migrate, MigrateCommand
 # from flask.ext.script import Manager
 
 # Creating app instance
-app = create_app(('production'))
+app = create_app('development')
 manager = Manager(app)
 manager.add_command('server', Server)
 migrate = Migrate(app, db)
