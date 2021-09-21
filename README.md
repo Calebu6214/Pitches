@@ -30,7 +30,8 @@ Installation for the package can be done via `pip`: <br>
 
 ## Link to website
 . 
-
+## screenshot
+![home](app/static/photos/home.png)
 
 ## Setup
 * git clone 

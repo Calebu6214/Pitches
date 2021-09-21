@@ -1,6 +1,7 @@
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, validators
+from wtforms.fields.core import SelectField
 from wtforms_sqlalchemy.fields import QuerySelectField
 # from sqlalchemy.orm.util import identity_key
 # from wtforms.ext.sqlalchemy.fields import QuerySelectField
@@ -36,6 +37,11 @@ class PostForm(FlaskForm):
     post = TextAreaField('Your post here...',  validators=[Required()])
     endpoint = StringField('Endpoint', validators=[Required()])
     submit = SubmitField('Post')
+# class PostForm(FlaskForm):
+#     category=SelectField('Type',choices=[('promotion','promotion'),('pick up','pick up'),('interview','interview'),('motivation','motivation')])
+#     post = TextAreaField('Your post here...',  validators=[Required()])
+#     endpoint = StringField('Endpoint', validators=[Required()])
+#     submit = SubmitField('Post')
 
 class AddComment(FlaskForm):
     '''
